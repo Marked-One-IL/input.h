@@ -10,13 +10,21 @@ and make them safer and easier to use.
 
 - char* input(const char strPrn[])
   Return an allocated input with no limit (Like Python).
-
+  
+- char input_char(const char strPrn[])
+  Return a char from input.
+  If invalid input was entered, ask again for input.
+ 
 - long long int input_int(const char strPrn[])
   Return a converted interger from input.
   If invalid input was entered, ask again for input.
 
 - double input_float(const char strPrn[])
   Return a converted float from input.
+  If invalid input was entered, ask again for input.
+
+- char input_char_range(const char strPrn[], char rangeFrom, char rangeTo)
+  Return a char from input within within a specified range.
   If invalid input was entered, ask again for input.
 
 - long long int input_int_range(const char strPrn[], long long int rangeFrom, long long int rangeTo)
