@@ -12,8 +12,10 @@ Note: I only use .h file and don't separate it with .c file.
 
 // Main functions.
 char* input(const char strPrn[]);
+char input_char(const char strPrn[]);
 long long int input_int(const char strPrn[]);
 double input_float(const char strPrn[]);
+char input_char_range(const char strPrn[], char rangeFrom, char rangeTo);
 long long int input_int_range(const char strPrn[], long long int rangeFrom, long long int rangeTo);
 double input_float_range(const char strPrn[], double rangeFrom, double rangeTo);
 
@@ -89,7 +91,6 @@ char* input(const char strPrn[])
 
     return buffer;
 }
-
 
 /*
 Input: String.
@@ -295,6 +296,40 @@ double string_to_float(const char str[], bool* is_error)
     return sum * is_negative;
 }
 
+/*
+Input: String to print.
+Output: Char.
+Action: Ask for a char until only one char is entered.
+Note: No buffer overflow.
+*/
+char input_char(const char strPrn[])
+{
+    char* string = NULL;
+    char chr = ' ';
+
+    while (true)
+    {
+        string = input(strPrn);
+        
+        if (string == NULL || string[0] == '\0')
+        {
+            chr = '\0';
+            break;
+        }
+
+        // If it's only 1 char or the rest of string it's just spaces.
+        if (string[1] == '\0' || only_spaces_string(string + 1))
+        {
+            chr = string[0];
+            break;
+        }
+
+        free(string);
+    }
+
+    free(string);
+    return chr;
+}
 
 /*
 Input: String to print.
@@ -353,7 +388,29 @@ double input_float(const char strPrn[])
 }
 
 /*
-Input: String to print, Range from valid number, Range to valid number.
+Input: String to print, Range from valid char, Range to valid char.
+Output: The inputed char.
+Action: Ask from user to enter an input until it match the range.
+Note: No buffer overflow.
+*/
+char input_char_range(const char strPrn[], char rangeFrom, char rangeTo)
+{
+    char inp = 0;
+
+    // If the range is invalid, return '\0'.
+    if (rangeFrom >= rangeTo) return '\0';
+
+    // Ask for input until it match the range.
+    do
+    {
+        inp = input_char(strPrn);
+    } while (inp < rangeFrom || inp > rangeTo);
+
+    return inp;
+}
+
+/*
+Input: String to print, Range from valid int, Range to valid int.
 Output: The inputed interger.
 Action: Ask from user to enter an input until it match the range.
 Note: No buffer overflow.
@@ -375,8 +432,8 @@ long long int input_int_range(const char strPrn[], long long int rangeFrom, long
 }
 
 /*
-Input: String to print, Range from valid number, Range to valid number.
-Output: The inputed floatnumber.
+Input: String to print, Range from valid float, Range to valid float.
+Output: The inputed float number.
 Action: Ask from user to enter an input until it match the range.
 Note: No buffer overflow.
 */
