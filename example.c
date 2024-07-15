@@ -79,7 +79,7 @@ int main()
                 printf("Range: %f - %f\n", rangeFromFloat, rangeToFloat);
 
                 // Limition: I can't print rangeFromFloat and rangeToFloat.
-                floatNumber = input_int_range("Enter a float within that range: ", rangeFromFloat, rangeToFloat);
+                floatNumber = input_float_range("Enter a float within that range: ", rangeFromFloat, rangeToFloat);
                 printf("You entered: %f\n\n", floatNumber);
      			break;
 
