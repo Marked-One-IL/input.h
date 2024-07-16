@@ -1,4 +1,4 @@
-![Project Picture](pic.png)
+![Project Picture](ProjectPicture.png)
 
 A safer and easier solution for the C input functions.
 
