@@ -68,6 +68,7 @@ char* input(const char strPrn[])
             if (temp == NULL)
             {
                 free(buffer);
+                while (getc(stdin) != '\n'); // Clear buffer input.
                 return NULL;
             }
 
