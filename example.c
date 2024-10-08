@@ -21,7 +21,7 @@ int main()
     {
         puts("1. input()\n"
         "2. input_char()\n"
-        "3. int input_int()\n"
+        "3. input_int()\n"
         "4. input_float()\n"
         "5. input_char_range()\n"
         "6. input_int_range()\n"
