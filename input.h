@@ -1,6 +1,7 @@
 #ifndef INPUT
 #define INPUT
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
